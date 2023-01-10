@@ -1,0 +1,79 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  font-size: 62.5%;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: system-ui;
+  color: #555;
+  background-color: #fefae0;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* .container {
+  width: 100vw;
+} */
+
+.header {
+  display: flex;
+  max-width: 90vw;
+  height: 100vh;
+}
+
+.header-section {
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.title-section {
+  display: flexbox;
+  font-family: "Poppins", sans-serif;
+  /* margin-left: 2%; */
+  margin: 0 5% 0 5%;
+}
+
+.title-section h1 {
+  font-size: 8rem;
+  color: #4a70c4e7;
+}
+
+.title-section h3 {
+  font-size: 2rem;
+  text-align: left;
+  color: #4a70c4e7;
+  padding-top: -5px;
+  padding-left: 10px;
+  padding-bottom: 20px;
+}
+
+#finance-table {
+  display: flex;
+  border: 1px solid black;
+  margin-left: auto;
+  margin-right: auto;
+  /* padding: 0; */
+  border-collapse: collapse;
+  justify-content: center;
+}
+th {
+  border: 1px solid black;
+  padding: 5px;
+}
+
+tr {
+  border: 1px solid black;
+}
+
+td {
+  border: 1px solid black;
+  padding: 5px;
+}

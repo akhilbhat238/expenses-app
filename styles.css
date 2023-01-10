@@ -1,0 +1,108 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  font-size: 62.5%;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  color: #555;
+  /* background-color: #fefae0; */
+  /* min-height: 100vh; */
+  background: linear-gradient(blue yellow) center center cover no-repeat fixed;
+}
+
+.title-section {
+  display: block;
+  height: 9vh;
+  justify-content: flex-start;
+  margin-left: 5vw;
+  margin-top: 5vh;
+  border-left: 5px solid #4a70c4e7;
+  padding-left: 1%;
+  font-family: "Poppins", sans-serif;
+  /* width: 100%; */
+}
+
+.title-section {
+  color: #4a70c4e7;
+}
+
+.title-section h1 {
+  font-size: 4rem;
+  font-weight: 200%;
+}
+
+.title-section h3 {
+  font-size: 2rem;
+  font-weight: 100%;
+}
+
+.main-viz {
+  margin: 5vh 2vw 5vh 2vw;
+  background-color: aliceblue;
+  border: 1px solid grey;
+  height: 15vh;
+  border-radius: 25px;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.child-viz {
+  /* border: 1px solid gold; */
+  height: 100%;
+  align-items: center;
+  display: flex;
+  width: 30%;
+  justify-content: space-evenly;
+}
+
+.child-viz-section {
+  /* border: 1px solid green; */
+  height: 100%;
+  width: 45%;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  justify-content: flex-start;
+  padding-left: 5%;
+}
+
+.child-viz-section-text {
+  font-size: x-large;
+  /* border: none; */
+}
+
+#income-img {
+  width: 900%;
+  height: 90%;
+  /* border: 1px solid blue; */
+  background-image: url("https://cdn-icons-png.flaticon.com/512/4895/4895861.png");
+  background-size: 100% 100%;
+}
+#spend-img {
+  width: 900%;
+  height: 90%;
+  /* border: 1px solid blue; */
+  background-image: url("https://cdn-icons-png.flaticon.com/512/5501/5501391.png");
+  background-size: 100% 100%;
+}
+#savings-img {
+  width: 900%;
+  height: 90%;
+  /* border: 1px solid blue; */
+  background-image: url("https://cdn-icons-png.flaticon.com/512/913/913376.png");
+  background-size: 100% 100%;
+}
+
+img {
+  /* max-width: 100%;
+  height: auto; */
+}
