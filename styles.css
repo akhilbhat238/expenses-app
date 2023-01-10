@@ -12,9 +12,6 @@ html {
 body {
   font-family: "Poppins", sans-serif;
   color: #555;
-  /* background-color: #fefae0; */
-  /* min-height: 100vh; */
-  background: linear-gradient(blue yellow) center center cover no-repeat fixed;
 }
 
 .title-section {
@@ -26,11 +23,8 @@ body {
   border-left: 5px solid #4a70c4e7;
   padding-left: 1%;
   font-family: "Poppins", sans-serif;
-  /* width: 100%; */
-}
-
-.title-section {
   color: #4a70c4e7;
+  /* width: 100%; */
 }
 
 .title-section h1 {
@@ -46,13 +40,14 @@ body {
 .main-viz {
   margin: 5vh 2vw 5vh 2vw;
   background-color: aliceblue;
-  border: 1px solid grey;
+  /* border: 1px solid grey; */
   height: 15vh;
   border-radius: 25px;
   display: flex;
   flex-wrap: nowrap;
   justify-content: space-evenly;
   align-items: center;
+  box-shadow: 2px 5px;
 }
 
 .child-viz {
@@ -80,29 +75,18 @@ body {
   /* border: none; */
 }
 
-#income-img {
-  width: 900%;
-  height: 90%;
-  /* border: 1px solid blue; */
-  background-image: url("https://cdn-icons-png.flaticon.com/512/4895/4895861.png");
-  background-size: 100% 100%;
-}
-#spend-img {
-  width: 900%;
-  height: 90%;
-  /* border: 1px solid blue; */
-  background-image: url("https://cdn-icons-png.flaticon.com/512/5501/5501391.png");
-  background-size: 100% 100%;
-}
-#savings-img {
-  width: 900%;
-  height: 90%;
-  /* border: 1px solid blue; */
-  background-image: url("https://cdn-icons-png.flaticon.com/512/913/913376.png");
+.child-viz-section-img {
+  width: 75%;
+  height: 75%;
   background-size: 100% 100%;
 }
 
-img {
-  /* max-width: 100%;
-  height: auto; */
+#income-img {
+  background-image: url("https://cdn-icons-png.flaticon.com/512/4895/4895861.png");
+}
+#spend-img {
+  background-image: url("https://cdn-icons-png.flaticon.com/512/5501/5501391.png");
+}
+#savings-img {
+  background-image: url("https://cdn-icons-png.flaticon.com/512/913/913376.png");
 }
