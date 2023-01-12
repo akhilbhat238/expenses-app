@@ -40,7 +40,6 @@ body {
 .main-viz {
   margin: 5vh 2vw 5vh 2vw;
   background-color: aliceblue;
-  /* border: 1px solid grey; */
   height: 15vh;
   border-radius: 25px;
   display: flex;
@@ -51,7 +50,6 @@ body {
 }
 
 .child-viz {
-  /* border: 1px solid gold; */
   height: 100%;
   align-items: center;
   display: flex;
@@ -60,7 +58,6 @@ body {
 }
 
 .child-viz-section {
-  /* border: 1px solid green; */
   height: 100%;
   width: 45%;
   align-items: center;
@@ -72,7 +69,6 @@ body {
 
 .child-viz-section-text {
   font-size: x-large;
-  /* border: none; */
 }
 
 .child-viz-section-img {
@@ -89,4 +85,98 @@ body {
 }
 #savings-img {
   background-image: url("https://cdn-icons-png.flaticon.com/512/913/913376.png");
+}
+
+.details-viz {
+  justify-content: center;
+  width: 50%;
+  margin-left: 50vh;
+}
+
+.details-viz-hdr {
+  background-color: aliceblue;
+  display: flex;
+  border-bottom: 2px solid white;
+}
+
+.details-viz-name {
+  flex: 0.9;
+  text-align: center;
+}
+
+.details-viz-arrow {
+  position: relative;
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-right: 0.2em solid black;
+  border-top: 0.2em solid black;
+  transition: 0.5s;
+}
+
+.down {
+  top: 5px;
+  content: "";
+  transform: rotate(135deg);
+}
+
+.up {
+  top: 10px;
+  content: "";
+  transform: rotate(-45deg);
+}
+
+.details-viz-tabs {
+  height: 6vh;
+  background-color: aliceblue;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  /* border-radius: 5px; */
+  border-bottom: 2px solid white;
+}
+
+.details-viz-table {
+  background-color: aliceblue;
+  height: 30vh;
+  padding: 5%;
+}
+
+.hidden {
+  display: none;
+}
+
+.catg-tabs {
+  border: 1px solid cornflowerblue;
+  text-align: center;
+  color: cornflowerblue;
+  padding: 0.5vw;
+  border-radius: 15px;
+  font-size: larger;
+}
+
+.catg-tabs.active {
+  background-color: cornflowerblue;
+  color: white;
+}
+
+#finance-table {
+  width: 100%;
+  border-collapse: collapse;
+  display: grid;
+  grid-template-columns: repeat(2, 50px 1fr) 100px;
+}
+
+tr,
+th,
+td {
+  margin-top: 20%;
+  border: 1px solid black;
+  font-size: larger;
+  text-align: center;
+}
+
+th {
+  background-color: cornflowerblue;
+  color: white;
 }
