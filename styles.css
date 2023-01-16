@@ -182,16 +182,26 @@ th {
   color: white;
 } */
 
-.table-container {
+.table-header {
   display: grid;
-  /* grid-template-columns: repeat(2, 50%); */
-  /* grid-gap: 5px; */
-  /* box-sizing: border-box; */
-  /* height: 100%; */
+}
+
+.table-header-cell {
+  display: grid;
   background-color: cornflowerblue;
   padding: 20px;
   padding: 0%;
-  /* border: 1px solid black; */
+  border-collapse: collapse;
+}
+
+.table-detail {
+  display: grid;
+}
+
+.table-detail-cell {
+  display: grid;
+  padding: 20px;
+  padding: 0%;
   border-collapse: collapse;
 }
 
@@ -207,7 +217,15 @@ th {
   grid-template-columns: repeat(6, 16.67%);
 }
 
-.table-container-cell {
+.table-header-cell {
+  border: 1px solid black;
+  padding: 0%;
+  margin: 0%;
+  text-align: center;
+  font-size: x-large;
+}
+
+.table-detail-cell {
   border: 1px solid black;
   padding: 0%;
   margin: 0%;

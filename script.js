@@ -5,9 +5,12 @@ const detailsDiv = document.querySelector(".details-viz-div");
 const detailsTabs = document.querySelector(".details-viz-tabs");
 const detailsTable = document.querySelector(".details-viz-table");
 const dispTable = document.querySelector("#finance-table");
-const dynamicTable = document.querySelector(".table-container");
-const dynamicTableCell = document.querySelector(".table-container-cell");
+const dynamicTable = document.querySelector(".table-header");
+const dynamicTableCell = document.querySelector(".table-header-cell");
+const dynamicDetail = document.querySelector(".table-detail");
+const dynamicDetailCell = document.querySelector(".table-detail-cell");
 
+const btnTabs = document.querySelectorAll(".catg-tabs");
 const btnTab1 = document.querySelector("#tab1");
 const btnTab2 = document.querySelector("#tab2");
 
@@ -19,23 +22,58 @@ const getActiveTab = function () {
 
 var tabDict = {
   tab1: "expenses_by_length",
-  tab2: "expenses_by_category",
+  tab2: "expenses_by_type",
+  tab3: "expenses_by_category",
+  tab4: "annual_expense",
+  tab5: "monthly_expense",
+  tab6: "one_time_expense",
+  tab7: "personal_expense_breakdown",
 };
 
-const addGrids = function (gridCount) {
-  let columnCount;
-  columnCount = gridCount == 2 ? "double" : "triple";
-  columnCount = columnCount + "-col";
-  console.log(columnCount);
-  dynamicTable.classList.remove("single-col");
-  dynamicTable.classList.add(columnCount);
-  for (let grid = 1; grid <= gridCount; grid++) {
-    dynamicTable.appendChild(dynamicTableCell);
-  }
+const addGrids = function (gridState) {
+  let btnClassList = dynamicTable.className.split(" ");
+  let pattern = /col/;
+  btnClassList.forEach(function (btnClassId) {
+    if (pattern.test(btnClassId)) {
+      if (btnClassId != gridState) {
+        dynamicTable.classList.remove(btnClassId);
+        dynamicTable.classList.add(gridState);
+        // dynamicDetail.classList.remove(btnClassId);
+        // dynamicDetailCell.classList.add(gridState);
+      }
+    }
+  });
+
+  // let columnCount;
+  // columnCount = gridCount == 2 ? "double" : "triple";
+  // columnCount = columnCount + "-col";
+  // console.log(columnCount);
+  // dynamicTable.classList.remove("single-col");
+  // dynamicTable.classList.add(columnCount);
+  // for (let grid = 1; grid <= gridCount; grid++) {
+  //   dynamicTable.appendChild(dynamicTableCell);
+  // }
+};
+
+const createDiv = function (gridState, divKey, divValue) {
+  console.log("Here");
+  const insertDiv = document.createElement("div");
+  insertDiv.classList.add("table-detail");
+  insertDiv.classList.add(gridState);
+  const insertDivKey = document.createElement("div");
+  insertDivKey.classList.add("table-detail-cell");
+  insertDivKey.classList.add("key");
+  insertDivKey.innerHTML = divKey;
+  insertDiv.appendChild(insertDivKey);
+  const insertDivValue = document.createElement("div");
+  insertDivValue.classList.add("table-detail-cell");
+  insertDivValue.classList.add("value");
+  insertDivValue.innerHTML = divValue;
+  insertDiv.appendChild(insertDivValue);
+  return insertDiv;
 };
 
 const getFinanceData = function (tabId) {
-  console.log(tabId);
   const tabLink = `https://shark-app-pytes.ondigitalocean.app/${tabDict[tabId]}`;
   const request = new XMLHttpRequest();
   request.open("GET", tabLink);
@@ -43,13 +81,18 @@ const getFinanceData = function (tabId) {
 
   request.addEventListener("load", function () {
     const data = JSON.parse(this.responseText);
-    console.log(data);
     const numEntries = Object.keys(data).length;
     const gridCount = Math.ceil(numEntries / 5);
-    if (gridCount == 2) {
-      addGrids(2);
-    } else if (gridCount >= 3) {
-      addGrids(3);
+    if (gridCount == 1) {
+      addGrids("single-col");
+      for (const key in data) {
+        const newEle = createDiv("single-col", key, data[key]);
+        dynamicDetail.appendChild(newEle);
+      }
+    } else if (gridCount == 2) {
+      addGrids("double-col");
+    } else {
+      addGrids("triple-col");
     }
 
     // for (const property in data) {
@@ -72,7 +115,6 @@ const flipFunction = function (inputElement) {
     detailsTabs.classList.remove("hidden");
     detailsTable.classList.remove("hidden");
     activeTab = getActiveTab();
-    console.log(activeTab.id);
     getFinanceData(activeTab.id);
   } else {
     arrowButton.classList.remove("up");
@@ -90,10 +132,13 @@ arrowButton.addEventListener("click", function () {
   // addGrids(3);
 });
 
-btnTab2.addEventListener("click", function () {
-  btnTab1.classList.remove("active");
-  btnTab2.classList.add("active");
-  activeTab = getActiveTab();
-  console.log(activeTab.id);
-  getFinanceData(activeTab.id);
+btnTabs.forEach(function (btnTab) {
+  btnTab.addEventListener("click", function () {
+    btnTabs.forEach(function (allTab) {
+      allTab.classList.remove("active");
+    });
+    btnTab.classList.add("active");
+    activeTab = getActiveTab();
+    getFinanceData(activeTab.id);
+  });
 });
