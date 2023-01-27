@@ -97,6 +97,7 @@ body {
   background-color: aliceblue;
   display: flex;
   border-bottom: 2px solid white;
+  cursor: pointer;
 }
 
 .details-viz-name {
@@ -111,7 +112,20 @@ body {
   height: 10px;
   border-right: 0.2em solid black;
   border-top: 0.2em solid black;
-  transition: 0.5s;
+}
+
+.details-viz-tabs {
+  height: 6vh;
+  background-color: aliceblue;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border-bottom: 2px solid white;
+}
+
+.details-viz-table {
+  background-color: aliceblue;
+  padding: 5%;
 }
 
 .down {
@@ -124,22 +138,6 @@ body {
   top: 10px;
   content: "";
   transform: rotate(-45deg);
-}
-
-.details-viz-tabs {
-  height: 6vh;
-  background-color: aliceblue;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  /* border-radius: 5px; */
-  border-bottom: 2px solid white;
-}
-
-.details-viz-table {
-  background-color: aliceblue;
-  height: 30vh;
-  padding: 5%;
 }
 
 .hidden {
@@ -161,48 +159,37 @@ body {
   color: white;
 }
 
-/* #finance-table {
-  width: 100%;
-  border-collapse: collapse;
-  display: grid;
-  grid-template-columns: repeat(2, 50px 1fr) 100px;
-}
-
-tr,
-th,
-td {
-  margin-top: 20%;
-  border: 1px solid black;
-  font-size: larger;
-  text-align: center;
-}
-
-th {
-  background-color: cornflowerblue;
-  color: white;
-} */
-
 .table-header {
   display: grid;
+  border-collapse: collapse;
 }
 
 .table-header-cell {
   display: grid;
   background-color: cornflowerblue;
-  padding: 20px;
   padding: 0%;
   border-collapse: collapse;
+  border: 1px solid black;
+  padding: 0%;
+  margin: 0%;
+  text-align: center;
+  font-size: large;
 }
 
 .table-detail {
   display: grid;
+  border-collapse: collapse;
 }
 
 .table-detail-cell {
   display: grid;
-  padding: 20px;
-  padding: 0%;
   border-collapse: collapse;
+  border: 1px solid black;
+  padding: 5%;
+  margin: 0%;
+  text-align: center;
+  font-size: small;
+  justify-content: center;
 }
 
 .single-col {
@@ -215,20 +202,4 @@ th {
 
 .triple-col {
   grid-template-columns: repeat(6, 16.67%);
-}
-
-.table-header-cell {
-  border: 1px solid black;
-  padding: 0%;
-  margin: 0%;
-  text-align: center;
-  font-size: x-large;
-}
-
-.table-detail-cell {
-  border: 1px solid black;
-  padding: 0%;
-  margin: 0%;
-  text-align: center;
-  font-size: x-large;
 }
