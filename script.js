@@ -13,6 +13,11 @@ const dynamicDetailCell = document.querySelector(".table-detail-cell");
 const btnTabs = document.querySelectorAll(".catg-tabs");
 const btnTab1 = document.querySelector("#tab1");
 const btnTab2 = document.querySelector("#tab2");
+const btnTab3 = document.querySelector("#tab3");
+const btnTab4 = document.querySelector("#tab4");
+const btnTab5 = document.querySelector("#tab5");
+const btnTab6 = document.querySelector("#tab6");
+const btnTab7 = document.querySelector("#tab7");
 
 let activeTab;
 
@@ -30,33 +35,151 @@ var tabDict = {
   tab7: "personal_expense_breakdown",
 };
 
-const addGrids = function (gridState) {
+// const addGrids = function (gridState) {
+//   let btnClassList = dynamicTable.className.split(" ");
+//   let pattern = /col/;
+//   btnClassList.forEach(function (btnClassId) {
+//     console.log("1");
+//     if (pattern.test(btnClassId)) {
+//       if (btnClassId != gridState) {
+//         dynamicTable.classList.remove(btnClassId);
+//         dynamicTable.classList.add(gridState);
+//         // dynamicDetail.classList.remove(btnClassId);
+//         // dynamicDetailCell.classList.add(gridState);
+//         // console.log("Here");
+//         // console.log(dynamicDetailCell.classList);
+//         if (gridState == "triple-col") {
+//           const insertDiv = document.createElement("div");
+//           insertDiv.classList.add("table-header-cell");
+//           insertDiv.classList.add("header");
+//           insertDiv.classList.add("key");
+//           insertDiv.innerHTML = "Hello";
+//           dynamicTable.appendChild(insertDiv);
+
+//           const insertDiv2 = document.createElement("div");
+//           insertDiv2.classList.add("table-header-cell");
+//           insertDiv2.classList.add("header");
+//           insertDiv2.classList.add("value");
+//           insertDiv2.innerHTML = "Goodbye";
+//           dynamicTable.appendChild(insertDiv2);
+
+//           const insertDiv3 = document.createElement("div");
+//           insertDiv3.classList.add("table-header-cell");
+//           insertDiv3.classList.add("header");
+//           insertDiv3.classList.add("key");
+//           insertDiv3.innerHTML = "Hello";
+//           dynamicTable.appendChild(insertDiv3);
+
+//           const insertDiv4 = document.createElement("div");
+//           insertDiv4.classList.add("table-header-cell");
+//           insertDiv4.classList.add("header");
+//           insertDiv4.classList.add("value");
+//           insertDiv4.innerHTML = "Goodbye";
+//           dynamicTable.appendChild(insertDiv4);
+//         } else if (gridState == "double-col") {
+//           const insertDiv = document.createElement("div");
+//           insertDiv.classList.add("table-header-cell");
+//           insertDiv.classList.add("header");
+//           insertDiv.classList.add("key");
+//           insertDiv.innerHTML = "Hello";
+//           dynamicTable.appendChild(insertDiv);
+
+//           const insertDiv2 = document.createElement("div");
+//           insertDiv2.classList.add("table-header-cell");
+//           insertDiv2.classList.add("header");
+//           insertDiv2.classList.add("value");
+//           insertDiv2.innerHTML = "Goodbye";
+//           dynamicTable.appendChild(insertDiv2);
+//         }
+//       }
+//     }
+//   });
+
+// let columnCount;
+// columnCount = gridCount == 2 ? "double" : "triple";
+// columnCount = columnCount + "-col";
+// console.log(columnCount);
+// dynamicTable.classList.remove("single-col");
+// dynamicTable.classList.add(columnCount);
+// for (let grid = 1; grid <= gridCount; grid++) {
+//   dynamicTable.appendChild(dynamicTableCell);
+// }
+// };
+
+const insertHeader = function () {
+  const insertDiv = document.createElement("div");
+  insertDiv.classList.add("table-header-cell");
+  insertDiv.classList.add("header");
+  insertDiv.classList.add("key");
+  insertDiv.innerHTML = "Key";
+  return insertDiv;
+};
+
+const insertDetail = function (cellType, requestData) {
+  const insertDiv = document.createElement("div");
+  insertDiv.classList.add("table-detail-cell");
+  insertDiv.classList.add("detail");
+  insertDiv.classList.add(cellType);
+  insertDiv.innerHTML = requestData;
+  return insertDiv;
+};
+
+const addGridColumns = function (gridState, requestData) {
   let btnClassList = dynamicTable.className.split(" ");
   let pattern = /col/;
   btnClassList.forEach(function (btnClassId) {
     if (pattern.test(btnClassId)) {
-      if (btnClassId != gridState) {
-        dynamicTable.classList.remove(btnClassId);
-        dynamicTable.classList.add(gridState);
-        // dynamicDetail.classList.remove(btnClassId);
-        // dynamicDetailCell.classList.add(gridState);
+      dynamicTable.classList.remove(btnClassId);
+      dynamicTable.classList.add(gridState);
+      dynamicDetail.classList.remove(btnClassId);
+      dynamicDetail.classList.add(gridState);
+      if (gridState == "single-col") {
+        dynamicTable.innerHTML = "";
+        dynamicTable.appendChild(insertHeader());
+        dynamicTable.appendChild(insertHeader());
+        dynamicDetail.innerHTML = "";
+        for (const key in requestData) {
+          dynamicDetail.appendChild(insertDetail("key", key));
+          dynamicDetail.appendChild(
+            insertDetail("value", Math.round(requestData[key] * 100) / 100)
+          );
+        }
+      } else if (gridState == "double-col") {
+        dynamicTable.innerHTML = "";
+        dynamicTable.appendChild(insertHeader());
+        dynamicTable.appendChild(insertHeader());
+        dynamicTable.appendChild(insertHeader());
+        dynamicTable.appendChild(insertHeader());
+        dynamicDetail.innerHTML = "";
+        Object.keys(requestData).forEach((key) => {
+          dynamicDetail.appendChild(insertDetail("key", key));
+          dynamicDetail.appendChild(
+            insertDetail("value", Math.round(requestData[key] * 100) / 100)
+          );
+        });
+        // dynamicTable.appendChild(insertHeader());
+        // dynamicTable.appendChild(insertHeader());
+      } else {
+        dynamicTable.innerHTML = "";
+        dynamicTable.appendChild(insertHeader());
+        dynamicTable.appendChild(insertHeader());
+        dynamicTable.appendChild(insertHeader());
+        dynamicTable.appendChild(insertHeader());
+        dynamicTable.appendChild(insertHeader());
+        dynamicTable.appendChild(insertHeader());
+        dynamicDetail.innerHTML = "";
+        Object.keys(requestData).forEach((key) => {
+          dynamicDetail.appendChild(insertDetail("key", key));
+          dynamicDetail.appendChild(
+            insertDetail("value", Math.round(requestData[key] * 100) / 100)
+          );
+        });
       }
     }
   });
-
-  // let columnCount;
-  // columnCount = gridCount == 2 ? "double" : "triple";
-  // columnCount = columnCount + "-col";
-  // console.log(columnCount);
-  // dynamicTable.classList.remove("single-col");
-  // dynamicTable.classList.add(columnCount);
-  // for (let grid = 1; grid <= gridCount; grid++) {
-  //   dynamicTable.appendChild(dynamicTableCell);
-  // }
 };
 
 const createDiv = function (gridState, divKey, divValue) {
-  console.log("Here");
   const insertDiv = document.createElement("div");
   insertDiv.classList.add("table-detail");
   insertDiv.classList.add(gridState);
@@ -78,21 +201,30 @@ const getFinanceData = function (tabId) {
   const request = new XMLHttpRequest();
   request.open("GET", tabLink);
   request.send();
+  // console.log(typeof request);
 
   request.addEventListener("load", function () {
     const data = JSON.parse(this.responseText);
     const numEntries = Object.keys(data).length;
     const gridCount = Math.ceil(numEntries / 5);
     if (gridCount == 1) {
-      addGrids("single-col");
-      for (const key in data) {
-        const newEle = createDiv("single-col", key, data[key]);
-        dynamicDetail.appendChild(newEle);
-      }
+      addGridColumns("single-col", data);
+      // for (const key in data) {
+      //   const newEle = createDiv("single-col", key, data[key]);
+      //   dynamicDetail.appendChild(newEle);
+      // }
     } else if (gridCount == 2) {
-      addGrids("double-col");
+      addGridColumns("double-col", data);
+      // for (const key in data) {
+      //   const newEle = createDiv("single-col", key, data[key]);
+      //   dynamicDetail.appendChild(newEle);
+      // }
     } else {
-      addGrids("triple-col");
+      addGridColumns("triple-col", data);
+      // for (const key in data) {
+      //   const newEle = createDiv("triple-col", key, data[key]);
+      //   dynamicDetail.appendChild(newEle);
+      // }
     }
 
     // for (const property in data) {
@@ -139,6 +271,8 @@ btnTabs.forEach(function (btnTab) {
     });
     btnTab.classList.add("active");
     activeTab = getActiveTab();
+
+    dynamicDetail.innerHTML = "";
     getFinanceData(activeTab.id);
   });
 });
